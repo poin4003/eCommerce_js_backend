@@ -1,0 +1,27 @@
+{
+  "name": "eCommerce",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "amqplib": "^0.10.5",
+    "bcrypt": "^5.1.1",
+    "compression": "^1.7.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.7",
+    "eCommerce": "file:",
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "kafkajs": "^2.2.4",
+    "lodash": "^4.17.21",
+    "mongoose": "^8.9.4",
+    "morgan": "^1.10.0",
+    "redis": "^4.7.0",
+    "slugify": "^1.6.6"
+  }
+}
