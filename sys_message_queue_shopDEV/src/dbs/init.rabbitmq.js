@@ -33,7 +33,26 @@ const connectToRabbitMQForTest = async () => {
   }
 }
 
+const consumerQueue = async (channel, queueName) => {
+  try {
+    await channel.assertQueue(queueName, { durable: true })
+    console.log(`Wating for message...`)
+    channel.consume( queueName, msg => {
+      console.log(`Receive message: ${queueName}:::${msg.content.toString()}`)
+      // 1. find user following 
+      // 2. send message to user
+      // 3. yes, ok => success
+      // 4. error, setup DLX ....
+    }, {
+      noAck: true
+    })
+  } catch (error) {
+    console.error('error publish message to rabbitMQ::', error)
+  }
+}
+
 module.exports = {
   connectToRabbitMQ, 
-  connectToRabbitMQForTest
+  connectToRabbitMQForTest,
+  consumerQueue
 }
