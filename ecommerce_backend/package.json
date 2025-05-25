@@ -8,6 +8,7 @@
     "dev": "node --watch server.js"
   },
   "dependencies": {
+    "accesscontrol": "^2.2.1",
     "amqplib": "^0.10.5",
     "bcrypt": "^5.1.1",
     "compression": "^1.7.5",
@@ -21,6 +22,7 @@
     "lodash": "^4.17.21",
     "mongoose": "^8.9.4",
     "morgan": "^1.10.0",
+    "multer": "^2.0.0",
     "redis": "^4.7.0",
     "slugify": "^1.6.6"
   }
