@@ -2,11 +2,15 @@
 
 const { extend } = require("lodash")
 const { ReasonPhrases, StatusCodes } = require("../utils/httpStatusCode")
+const logger = require("../logs/winston.log")
 
 class ErrorResponse extends Error {
   constructor(message, statusCode) {
     super(message)
     this.status = statusCode
+
+    // Log the error use winston
+    logger.error(`${this.status} - ${this.message}`)
   }
 }
 
