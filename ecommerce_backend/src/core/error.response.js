@@ -8,8 +8,7 @@ class ErrorResponse extends Error {
   constructor(message, statusCode) {
     super(message);
     this.status = statusCode;
-
-    myLogger.error(this.message, ['/api/v1/login', 'vv33344', {error: "Bad request errror"}])
+    this.now = Date.now();
   }
 }
 

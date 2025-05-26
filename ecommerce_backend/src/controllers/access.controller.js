@@ -14,11 +14,6 @@ class AccessController {
   }
 
   login = async (req, res, next) => {
-    const { email } = req.body
-
-    if (!email) throw new BadRequestError("Param failed")
-    
-
     new SuccessResponse({
       metadata: await AccessService.login(req.body)
     }).send(res)
