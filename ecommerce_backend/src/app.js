@@ -10,6 +10,8 @@ require("dotenv").config();
 
 // Init db
 require("./dbs/init.mongodb");
+const initRedis = require("./dbs/init.redis");
+initRedis.initRedis();
 
 // Check overload
 // const { checkOverload } = require('./helpers/check.connect')

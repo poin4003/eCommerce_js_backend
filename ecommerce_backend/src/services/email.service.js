@@ -16,7 +16,7 @@ const sendEmailLinkVerify = async ({
 }) => {
   try {
     const mailOptions = {
-      from: 'ticketplaza1000@gmail.com',
+      from: process.env.EMAIL_USERNAME,
       to: toEmail,
       subject,
       text,
@@ -52,7 +52,7 @@ const sendEmailToken = async ({ email = null }) => {
 
     // 3. replace place holder with params
     const content = replacePlaceholder(template.tem_html, {
-      link_verify: `http://localhost:3055/cgp/welcom-back?token=${token.tem_token}`,
+      link_verify: `http://localhost:3055/v1/api/user/welcom-back?token=${token.tem_token}`,
     });
 
     // 4. Send email
