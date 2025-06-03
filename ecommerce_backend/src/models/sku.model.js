@@ -35,4 +35,4 @@ const skuSchema = new Schema(
   }
 );
 
-module.exports = model(DOCUMENT_NAME, productSchema);
+module.exports = model(DOCUMENT_NAME, skuSchema);
