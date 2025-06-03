@@ -3,22 +3,19 @@
 const { Schema, model } = require("mongoose");
 const slugify = require("slugify");
 
-const DOCUMENT_NAME = "Product";
-const COLLECTION_NAME = "Products";
+const DOCUMENT_NAME = "Spu";
+const COLLECTION_NAME = "spus";
 
 const productSchema = new Schema(
   {
+    product_id: { type: String, default: '' },
     product_name: { type: String, required: true },
     product_thumb: { type: String, required: true },
     product_description: { type: String },
     product_slug: { type: String },
     product_price: { type: Number, required: true },
+    product_category: { type: Array, required: true, default: [] },
     product_quantity: { type: String, required: true },
-    product_type: {
-      type: String,
-      required: true,
-      enum: ["Electronics", "Clothing", "Furniture"],
-    },
     product_shop: { type: Schema.Types.ObjectId, ref: "Shop" },
     product_attributes: { type: Schema.Types.Mixed, required: true },
     product_ratingsAverage: {
@@ -41,6 +38,7 @@ const productSchema = new Schema(
       index: true,
       select: false,
     },
+    isDeleted: { type: Boolean, default: false },
   },
   {
     collection: COLLECTION_NAME,
@@ -57,59 +55,4 @@ productSchema.pre("save", function (next) {
   next();
 });
 
-// Define model for clothes category
-const clothingSchema = new Schema(
-  {
-    brand: { type: String, required: true },
-    size: { type: String },
-    material: { type: String },
-    product_shop: {
-      type: Schema.Types.ObjectId,
-      ref: "Shop",
-    },
-  },
-  {
-    collection: "clothes",
-    timestamps: true,
-  }
-);
-
-// Define model for electronics category
-const electronicSchema = new Schema(
-  {
-    manufacturer: { type: String, requried: true },
-    model: { type: String },
-    color: { type: String },
-    product_shop: {
-      type: Schema.Types.ObjectId,
-      ref: "Shop",
-    },
-  },
-  {
-    collection: "electronics",
-    timestamps: true,
-  }
-);
-
-const furnitureSchema = new Schema(
-  {
-    brand: { type: String, requried: true },
-    size: { type: String },
-    material: { type: String },
-    product_shop: {
-      type: Schema.Types.ObjectId,
-      ref: "Shop",
-    },
-  },
-  {
-    collection: "furnitures",
-    timestamps: true,
-  }
-);
-
-module.exports = {
-  product: model(DOCUMENT_NAME, productSchema),
-  electronic: model("Electronics", electronicSchema),
-  clothing: model("Clothing", clothingSchema),
-  furniture: model("Furniture", furnitureSchema),
-};
+module.exports = model(DOCUMENT_NAME, productSchema);
