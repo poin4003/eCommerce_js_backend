@@ -12,6 +12,10 @@ require("dotenv").config();
 require("./dbs/init.mongodb");
 const initRedis = require("./dbs/init.redis");
 initRedis.initRedis();
+const initElasticSearch = require("./dbs/init.elasticsearch");
+initElasticSearch.init({
+  ELASTICSEARCH_IS_ENABLED: true
+});
 
 // Check overload
 // const { checkOverload } = require('./helpers/check.connect')
