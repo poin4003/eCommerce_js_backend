@@ -24,9 +24,15 @@ const replacePlaceholder = (template, params) => {
   return template;
 };
 
+// random ProductId
+const randomProductId =  _ => {
+  return Math.floor(Math.random() * 899999 + 100000);
+}
+
 module.exports = {
   getInfoData,
   getSelectData,
   getUnSelectData,
   replacePlaceholder,
+  randomProductId,
 };
