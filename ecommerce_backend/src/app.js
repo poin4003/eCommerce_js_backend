@@ -14,7 +14,12 @@ const initRedis = require("./dbs/init.redis");
 initRedis.initRedis();
 const initElasticSearch = require("./dbs/init.elasticsearch");
 initElasticSearch.init({
-  ELASTICSEARCH_IS_ENABLED: true
+  ELASTICSEARCH_IS_ENABLED: true,
+});
+const ioredis = require("./dbs/init.ioredis");
+ioredis.initIORedis({
+  IOREDIS_IS_ENABLED: true,
+  IOREDIS_HOST: "localhost",
 });
 
 // Check overload
